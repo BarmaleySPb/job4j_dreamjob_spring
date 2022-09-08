@@ -30,11 +30,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="post: ${posts}">
-                <td th:text="${post.id}"></td>
-                <td th:text="${post.name}"></td>
-                <td th:text="${post.description}"></td>
-                <td th:text="${post.created}"></td>
+            <tr th:each="candidate: ${candidates}">
+                <td th:text="${candidate.id}"></td>
+                <td th:text="${candidate.name}"></td>
+                <td th:text="${candidate.description}"></td>
+                <td th:text="${candidate.created}"></td>
             </tr>
             </tbody>
         </table>
