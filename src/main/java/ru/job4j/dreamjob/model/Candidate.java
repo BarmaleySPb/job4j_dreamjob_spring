@@ -13,6 +13,13 @@ public class Candidate {
     public Candidate() {
     }
 
+    public Candidate(int id, String name, String description, LocalDateTime created) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.created = created;
+    }
+
     public int getId() {
         return id;
     }
