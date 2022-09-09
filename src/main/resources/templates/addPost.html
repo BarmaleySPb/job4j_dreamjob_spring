@@ -22,22 +22,32 @@
 </head>
 <body>
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Dream job</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{/index}">Home</a>
+                <a class="nav-item nav-link" th:href="@{/posts}">Posts</a>
+                <a class="nav-item nav-link" th:href="@{/candidates}">Candidates</a>
+                <a class="nav-item nav-link active" href="#">Add post <span class="sr-only">(current)</span></a>
+            </div>
+        </div>
+    </nav>
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
                 New post.
             </div>
             <div class="card-body">
-                <form>
+                <form th:action="@{/createPost}" method="POST">
                     <div class="form-group">
-                        <label>Name
-                            <input type="text" class="form-control" placeholder="Enter job position">
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>Description
-                            <input type="text" class="form-control" placeholder="Enter description">
-                        </label>
+                        <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter job position">
+                        <label for="description">Description</label>
+                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description">
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
