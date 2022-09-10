@@ -10,6 +10,7 @@ public class Post {
     private String description;
     private LocalDateTime created = LocalDateTime.parse(LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+    private boolean visible;
 
     public Post() { }
 
@@ -31,6 +32,14 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public String getName() {
