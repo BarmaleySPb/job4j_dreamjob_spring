@@ -11,19 +11,23 @@ public class Post {
     private LocalDateTime created = LocalDateTime.parse(LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
     private boolean visible;
+    private City city;
 
-    public Post() { }
+    public Post() {
+
+    }
 
     public Post(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Post(int id, String name, String description, LocalDateTime created) {
+    public Post(int id, String name, String description, LocalDateTime created, City city) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.created = created;
+        this.city = city;
     }
 
     public int getId() {
@@ -32,6 +36,14 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public boolean isVisible() {
@@ -81,5 +93,17 @@ public class Post {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Post{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", description='" + description + '\''
+                + ", created=" + created
+                + ", visible=" + visible
+                + ", city=" + city
+                + '}';
     }
 }
