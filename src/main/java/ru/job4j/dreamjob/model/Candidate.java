@@ -5,12 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Candidate {
-
     private int id;
     private String name;
     private String description;
     private LocalDateTime created = LocalDateTime.parse(LocalDateTime.now()
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+    private byte[] photo;
 
     public Candidate() {
     }
@@ -57,6 +57,14 @@ public class Candidate {
 
     public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     @Override
