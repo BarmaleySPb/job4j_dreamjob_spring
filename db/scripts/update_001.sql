@@ -6,3 +6,11 @@ CREATE TABLE IF NOT EXISTS post (
     visible BOOLEAN,
     city_id INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS candidate (
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    description TEXT,
+    created TIMESTAMP,
+    photo bytea
+);
