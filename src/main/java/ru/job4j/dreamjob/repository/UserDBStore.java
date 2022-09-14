@@ -15,6 +15,8 @@ import java.util.Optional;
 @Repository
 public class UserDBStore {
     private static final String ADD_USER = "INSERT INTO users(email, password) VALUES (?, ?)";
+    private static final String FIND_USER_BY_EMAIL_AND_PASSWORD =
+            "SELECT * FROM users WHERE email = ? AND password = ?";
     private static final Logger LOG = LoggerFactory.getLogger(UserDBStore.class.getName());
     private final BasicDataSource pool;
 
@@ -39,5 +41,26 @@ public class UserDBStore {
             return Optional.empty();
         }
         return Optional.of(user);
+    }
+
+    public Optional<User> findUserByEmailAndPwd(String email, String password) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement(FIND_USER_BY_EMAIL_AND_PASSWORD)
+        ) {
+            ps.setString(1, email);
+            ps.setString(2, password);
+            try (ResultSet it = ps.executeQuery()) {
+                if (it.next()) {
+                    return Optional.of(new User(
+                            it.getInt("id"),
+                            it.getString("email"),
+                            it.getString("password")
+                    ));
+                }
+            }
+        } catch (Exception e) {
+            LOG.error("User is not found.", e);
+        }
+        return Optional.empty();
     }
 }

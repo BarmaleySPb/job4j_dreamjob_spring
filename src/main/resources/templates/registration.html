@@ -21,13 +21,16 @@
     <title>Dream job</title>
 </head>
 <body>
-
+<div class="container pt-3">
 <div class="row justify-content-center align-items-center">
-    <div class="card" style="width: 20%" >
+    <div class="card" style="width: 30%" >
         <div class="card-header">
             Registration.
         </div>
         <div class="card-body">
+            <div th:if="${fail}" class="alert alert-danger" role="alert">
+                User with this email already exists!
+            </div>
             <form th:action="@{/registration}" method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -41,6 +44,5 @@
     </div>
 </div>
 </div>
-
 </body>
 </html>
