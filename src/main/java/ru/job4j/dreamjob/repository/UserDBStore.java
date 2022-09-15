@@ -25,6 +25,7 @@ public class UserDBStore {
     }
 
     public Optional<User> add(User user) {
+        Optional<User> addedUser = Optional.empty();
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(ADD_USER, Statement.RETURN_GENERATED_KEYS)
         ) {
@@ -34,13 +35,13 @@ public class UserDBStore {
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
                     user.setId(id.getInt(1));
+                    addedUser = Optional.of(user);
                 }
             }
         } catch (Exception e) {
             LOG.error("User is not added.", e);
-            return Optional.empty();
         }
-        return Optional.of(user);
+        return addedUser;
     }
 
     public Optional<User> findUserByEmailAndPwd(String email, String password) {
