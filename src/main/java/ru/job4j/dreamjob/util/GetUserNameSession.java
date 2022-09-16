@@ -5,7 +5,7 @@ import ru.job4j.dreamjob.model.User;
 
 import javax.servlet.http.HttpSession;
 
-public class GetUserNameSession {
+public final class GetUserNameSession {
 
     private GetUserNameSession() {
         throw new IllegalStateException("Utility class");
