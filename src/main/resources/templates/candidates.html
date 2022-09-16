@@ -27,10 +27,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" th:href="@{/}">Home</a>
+                <a class="nav-item nav-link" th:href="@{/index}">Home</a>
                 <a class="nav-item nav-link" th:href="@{/posts}">Posts</a>
                 <a class="nav-item nav-link active" href="#">Candidates <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" th:href="@{/formAddCandidate}">Add candidate</a>
+                <a class="nav-item nav-link" th:if="${user.name == 'Guest'}" th:href="@{/loginPage}">
+                    <span th:text="${user.name}"></span>
+                    <span> | Login</span>
+                </a>
+                <a class="nav-item nav-link" th:if="${user.name != 'Guest'}" th:href="@{/logout}">
+                    <span th:text="${user.name}"></span>
+                    <span> | Logout</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -51,7 +59,7 @@
                     <a th:href="@{|/formUpdateCandidate/${candidate.id}|}">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <img th:width="150" th:high="150" th:src="@{|/photoCandidate/${candidate.id}|}">
+                    <img width="150" height="180" th:src="@{|/photoCandidate/${candidate.id}|}" alt="No photo">
                     <span th:text="${candidate.name}"></span>
                 </td>
                 <td th:text="${candidate.description}"></td>

@@ -17,6 +17,39 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+    <script>
+
+        function validate() {
+            const email = $('#email').val();
+            const password = $('#password').val();
+            const name = $('#name').val();
+            const confirmPassword = $('#confirmPassword').val();
+
+            if (name === '') {
+                alert('Please enter your name.');
+                return false;
+            }
+            if (email === '') {
+                alert('Please enter your email.');
+                return false;
+            }
+            if (password === '') {
+                alert('Please enter your password.');
+                return false;
+            }
+            if (confirmPassword === '') {
+                alert('Please confirm your password.');
+                return false;
+            }
+            if (password !== confirmPassword) {
+                alert('The password and password confirmation do not match.');
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
 
     <title>Dream job</title>
 </head>
@@ -33,12 +66,17 @@
             </div>
             <form th:action="@{/registration}" method="POST">
                 <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" class="form-control" name="password" id="confirmPassword"
+                           placeholder="Confirm your password">
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary" onclick="return validate();">Register</button>
             </form>
         </div>
     </div>

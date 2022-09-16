@@ -26,11 +26,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" th:href="@{/}">Home</a>
+                <a class="nav-item nav-link" th:href="@{/index}">Home</a>
                 <a class="nav-item nav-link" th:href="@{/posts}">Posts</a>
-                <a class="nav-item nav-link" th:href="@{/addPost}">Add post</a>
-                <a class="nav-item nav-link active" th:href="@{/addCandidate}">Add candidate</a>
+                <a class="nav-item nav-link active" href="#">Edit candidate <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" th:href="@{/candidates}">Candidates</a>
+                <a class="nav-item nav-link" th:if="${user.name == 'Guest'}" th:href="@{/loginPage}">
+                    <span th:text="${user.name}"></span>
+                    <span> | Login</span>
+                </a>
+                <a class="nav-item nav-link" th:if="${user.name != 'Guest'}" th:href="@{/logout}">
+                    <span th:text="${user.name}"></span>
+                    <span> | Logout</span>
+                </a>
             </div>
         </div>
     </nav>

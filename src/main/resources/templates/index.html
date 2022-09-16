@@ -31,7 +31,14 @@
                 <a class="nav-item nav-link" th:href="@{/candidates}">Candidates</a>
                 <a class="nav-item nav-link" th:href="@{/formAddPost}">Add post</a>
                 <a class="nav-item nav-link" th:href="@{/formAddCandidate}">Add candidate</a>
-                <a class="nav-item nav-link" th:href="@{/loginPage}">Login</a>
+                <a class="nav-item nav-link" th:if="${user.name == 'Guest'}" th:href="@{/loginPage}">
+                    <span th:text="${user.name}"></span>
+                    <span> | Login</span>
+                </a>
+                <a class="nav-item nav-link" th:if="${user.name != 'Guest'}" th:href="@{/logout}">
+                    <span th:text="${user.name}"></span>
+                    <span> | Logout</span>
+                </a>
             </div>
         </div>
     </nav>
