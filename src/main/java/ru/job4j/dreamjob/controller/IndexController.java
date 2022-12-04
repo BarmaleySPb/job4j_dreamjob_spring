@@ -13,7 +13,7 @@ import static ru.job4j.dreamjob.util.GetUserNameSession.getUserName;
 @ThreadSafe
 public class IndexController {
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String index(Model model, HttpSession session) {
         getUserName(model, session);
         return "index";

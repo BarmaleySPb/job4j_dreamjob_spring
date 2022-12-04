@@ -38,7 +38,7 @@ public class UserController {
         }
         HttpSession session = req.getSession();
         session.setAttribute("user", regUser.get());
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @GetMapping("/loginPage")
@@ -58,6 +58,6 @@ public class UserController {
         }
         HttpSession session = req.getSession();
         session.setAttribute("user", userDb.get());
-        return "redirect:/index";
+        return "redirect:/";
     }
 }
